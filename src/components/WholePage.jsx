@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
+import List from './List';
 
 const WholePage = () => {
   return (
@@ -18,7 +19,7 @@ const WholePage = () => {
       <GradientH height='50px' />
       <SandHeader />
       <Content>
-        <Box display='flex'>
+        <Box marginLeft='15px' display='flex'>
           <Button
             display='flex'
             justifyContent='center'
@@ -31,6 +32,41 @@ const WholePage = () => {
             Edit
           </Button>
         </Box>
+        <Box marginTop='30px' display='flex'>
+          <TableTitle
+            width='10vw'
+            height='50px'
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+          >
+            Date
+          </TableTitle>
+          <TableTitle
+            paddingX='15px'
+            width='30vw'
+            height='50px'
+            display='flex'
+            justifyContent='space-between'
+            alignItems='center'
+          >
+            <Box> Type something 1</Box>
+            <BoxHover>
+              <i className='fas fa-sort' />
+            </BoxHover>
+          </TableTitle>
+
+          <TableTitle
+            width='5vw'
+            height='50px'
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+          >
+            Delete
+          </TableTitle>
+        </Box>
+        <List />
       </Content>
       <GradientV />
       <SandFooter />
@@ -90,8 +126,8 @@ const SandFooter = styled.div`
 const Content = styled.div`
   position: absolute;
   top: 160px;
-  left: 140px;
-  width: calc(100% - 120px - 140px);
+  left: 120px;
+  width: calc(100% - 200px);
   height: calc(100% - 320px);
   border: 1px solid red;
 `;
@@ -102,6 +138,21 @@ const Button = styled(Box)`
   border-radius: 6px;
   color: ${props => props.theme.colors.white};
   background: ${props => props.theme.colors.graBlue1};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const TableTitle = styled(Box)`
+  background: ${props => props.theme.colors.tableHead};
+  color: ${props => props.theme.colors.fontGray};
+  border: 1px solid ${props => props.theme.colors.tabledorder};
+`;
+
+const BoxHover = styled(Box)`
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default WholePage;
