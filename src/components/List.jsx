@@ -41,6 +41,9 @@ const List = () => {
 const TableTitle = styled(Box)`
   color: ${props => props.theme.colors.fontGray};
   border: 1px solid ${props => props.theme.colors.tabledorder};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default List;
