@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ModalProvider } from 'styled-react-modal';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
+import { AppContext } from '../context/AppContext';
 import List from './List';
+import AddCustomerModal from './AddCustomerModal';
 
 const WholePage = () => {
+  const { isEdit, setIsEdit, setIsModalOpen, customerList } = useContext(
+    AppContext
+  );
+
   return (
-    <>
+    <ModalProvider>
       <LogoN
         height='45px'
         width='45px'
@@ -28,9 +35,26 @@ const WholePage = () => {
           >
             Start
           </Button>
-          <Button display='flex' justifyContent='center' alignItems='center'>
-            Edit
+          <Button
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+            marginRight='10px'
+            onClick={() => setIsEdit(!isEdit)}
+          >
+            {isEdit ? 'Save' : 'Edit'}
           </Button>
+          {isEdit && (
+            <Button
+              width='150px'
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              onClick={() => setIsModalOpen(true)}
+            >
+              Opprett ny kunde
+            </Button>
+          )}
         </Box>
         <Box marginTop='30px' display='flex'>
           <TableTitle
@@ -66,11 +90,15 @@ const WholePage = () => {
             Delete
           </TableTitle>
         </Box>
-        <List />
+
+        {customerList.map(d => (
+          <List key={d.id} id={d.id} date={d.date} name={d.name} />
+        ))}
       </Content>
       <GradientV />
+      <AddCustomerModal />
       <SandFooter />
-    </>
+    </ModalProvider>
   );
 };
 
@@ -129,7 +157,6 @@ const Content = styled.div`
   left: 120px;
   width: calc(100% - 200px);
   height: calc(100% - 320px);
-  border: 1px solid red;
 `;
 
 const Button = styled(Box)`
