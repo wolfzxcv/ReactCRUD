@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ReactCRUD/static/css/main.76efb973.chunk.css",
-    "main.js": "/ReactCRUD/static/js/main.64523244.chunk.js",
-    "main.js.map": "/ReactCRUD/static/js/main.64523244.chunk.js.map",
+    "main.js": "/ReactCRUD/static/js/main.b7d9f53a.chunk.js",
+    "main.js.map": "/ReactCRUD/static/js/main.b7d9f53a.chunk.js.map",
     "runtime-main.js": "/ReactCRUD/static/js/runtime-main.b32ebc6c.js",
     "runtime-main.js.map": "/ReactCRUD/static/js/runtime-main.b32ebc6c.js.map",
     "static/js/2.3a8a7720.chunk.js": "/ReactCRUD/static/js/2.3a8a7720.chunk.js",
     "static/js/2.3a8a7720.chunk.js.map": "/ReactCRUD/static/js/2.3a8a7720.chunk.js.map",
     "index.html": "/ReactCRUD/index.html",
-    "precache-manifest.8bce8f5dedbb1b69a804d97796cbe86b.js": "/ReactCRUD/precache-manifest.8bce8f5dedbb1b69a804d97796cbe86b.js",
+    "precache-manifest.23508e9d91c0b46e5b370d3aaf9564e5.js": "/ReactCRUD/precache-manifest.23508e9d91c0b46e5b370d3aaf9564e5.js",
     "service-worker.js": "/ReactCRUD/service-worker.js",
     "static/css/main.76efb973.chunk.css.map": "/ReactCRUD/static/css/main.76efb973.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.b32ebc6c.js",
     "static/js/2.3a8a7720.chunk.js",
     "static/css/main.76efb973.chunk.css",
-    "static/js/main.64523244.chunk.js"
+    "static/js/main.b7d9f53a.chunk.js"
   ]
 }
