@@ -7,6 +7,7 @@ const AppContextProvider = props => {
   const [input, setInput] = useState({ date: '', name: '' });
   const [isEdit, setIsEdit] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState('Opprett ny kunde');
   const [customerList, setCustomerList] = useState([]);
 
   const addCustomer = data => {
@@ -14,14 +15,24 @@ const AppContextProvider = props => {
     setCustomerList([...customerList, data]);
     setIsModalOpen(false);
     setInput({ date: '', name: '' });
-    console.log('After adding CustomerList', [...customerList, data]);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalTitle('Opprett ny kunde');
+    setInput({ date: '', name: '' });
   };
 
   const removeCustomer = id => {
-    console.log(id);
     const newList = customerList.filter(d => d.id !== id);
     setCustomerList(newList);
-    console.log('After removing CustomerList', newList);
+  };
+
+  const editCustomer = id => {
+    const customer = customerList.find(d => d.id === id);
+    setModalTitle(`Edit ${customer.name}`);
+    setIsModalOpen(true);
+    setInput({ date: customer.date, name: customer.name });
   };
 
   const value = {
@@ -31,10 +42,14 @@ const AppContextProvider = props => {
     setIsEdit,
     isModalOpen,
     setIsModalOpen,
+    modalTitle,
+    setModalTitle,
     customerList,
     setCustomerList,
     addCustomer,
     removeCustomer,
+    editCustomer,
+    closeModal,
   };
 
   return <AppContext.Provider value={value} {...props} />;

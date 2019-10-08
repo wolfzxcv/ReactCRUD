@@ -9,12 +9,13 @@ const AddCustomerModal = () => {
     input,
     setInput,
     isModalOpen,
-    setIsModalOpen,
     addCustomer,
+    modalTitle,
+    closeModal,
   } = useContext(AppContext);
   return (
     <StyledModal isOpen={isModalOpen}>
-      <StyledModalTitle paddingLeft='10px'>Opprett ny kunde</StyledModalTitle>
+      <StyledModalTitle paddingLeft='10px'>{modalTitle}</StyledModalTitle>
       <Box display='flex' justifyContent='space-between' marginX='20px'>
         <Box display='flex'>
           <Box marginRight='10px'>
@@ -49,16 +50,16 @@ const AddCustomerModal = () => {
           marginRight='10px'
           onClick={() => addCustomer(input)}
         >
-          OK
+          Lagre
         </Button>
         <Button
           display='flex'
           justifyContent='center'
           alignItems='center'
           marginRight='10px'
-          onClick={() => setIsModalOpen(false)}
+          onClick={() => closeModal()}
         >
-          Cancel
+          Avbryt
         </Button>
       </Box>
     </StyledModal>
