@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import { AppContext } from '../context/AppContext';
 
-const List = (id, date, name) => {
+const List = ({ id, date, name }) => {
   const { isEdit, removeCustomer } = useContext(AppContext);
-  console.log('date & name', date, name);
+
   return (
     <Box display='flex'>
       {isEdit ? (
@@ -17,7 +18,7 @@ const List = (id, date, name) => {
             justifyContent='center'
             alignItems='center'
           >
-            date
+            {date}
           </TableTitle>
 
           <TableTitle
@@ -28,7 +29,7 @@ const List = (id, date, name) => {
             justifyContent='space-between'
             alignItems='center'
           >
-            name
+            {name}
           </TableTitle>
           <TableTitle
             width='5vw'
@@ -51,7 +52,7 @@ const List = (id, date, name) => {
             justifyContent='center'
             alignItems='center'
           >
-            date
+            {date}
           </TableTitleNotActive>
           <TableTitleNotActive
             paddingX='15px'
@@ -61,7 +62,7 @@ const List = (id, date, name) => {
             justifyContent='space-between'
             alignItems='center'
           >
-            name
+            {name}
           </TableTitleNotActive>
           <TableTitleNotActive
             width='5vw'
@@ -76,6 +77,12 @@ const List = (id, date, name) => {
       )}
     </Box>
   );
+};
+
+List.propTypes = {
+  id: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 const TableTitle = styled(Box)`
