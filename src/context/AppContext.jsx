@@ -11,6 +11,8 @@ const AppContextProvider = props => {
   const [customerList, setCustomerList] = useState([]);
   const [updateById, setUpdateById] = useState('');
   const [isProducing, setIsProducing] = useState(false);
+  const [showPopOver, setShowPopOver] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -65,8 +67,11 @@ const AppContextProvider = props => {
 
   const startProducing = () => {
     setIsProducing(true);
-    setIsEdit(false);
-    console.log('producing');
+    setIsWaiting(true);
+    setTimeout(() => {
+      setShowPopOver(true);
+      setIsWaiting(false);
+    }, 3000);
   };
 
   const value = {
@@ -89,6 +94,9 @@ const AppContextProvider = props => {
     isProducing,
     setIsProducing,
     startProducing,
+    showPopOver,
+    setShowPopOver,
+    isWaiting,
   };
 
   return <AppContext.Provider value={value} {...props} />;

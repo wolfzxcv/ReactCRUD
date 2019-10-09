@@ -4,13 +4,22 @@ import Box from '@material-ui/core/Box';
 import { AppContext } from '../context/AppContext';
 
 const PopOver = () => {
-  const { setIsProducing, customerList } = useContext(AppContext);
+  const {
+    setIsProducing,
+    customerList,
+    setShowPopOver,
+    setIsEdit,
+  } = useContext(AppContext);
   return (
     <StyledPopOver
       display='flex'
       flexDirection='column'
       bgcolor='white'
-      onClick={() => setIsProducing(false)}
+      onClick={() => {
+        setShowPopOver(false);
+        setIsProducing(false);
+        setIsEdit(false);
+      }}
     >
       <MessageArrow />
       <RoundBorder

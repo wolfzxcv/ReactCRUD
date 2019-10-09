@@ -3,6 +3,7 @@ import { ModalProvider } from 'styled-react-modal';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import { AppContext } from '../context/AppContext';
+import bars from '../assets/Bars.svg';
 import List from './List';
 import PopOver from './PopOver';
 import AddCustomerModal from './AddCustomerModal';
@@ -15,9 +16,9 @@ const WholePage = () => {
     customerList,
     isProducing,
     startProducing,
+    showPopOver,
+    isWaiting,
   } = useContext(AppContext);
-
-  console.log('isProducing', isProducing);
 
   return (
     <ModalProvider>
@@ -40,16 +41,28 @@ const WholePage = () => {
           alignItems='center'
           marginRight='70px'
         >
-          <Icon>
-            <i className='fas fa-check-circle' />
-          </Icon>
+          {isWaiting ? (
+            <Box
+              width='22px'
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+            >
+              <img src={bars} alt='waiting' />
+            </Box>
+          ) : (
+            <Icon>
+              <i className='fas fa-check-circle' />
+            </Icon>
+          )}
+
           <Box marginLeft='20px' color='white'>
             innstillinger
           </Box>
           <ArrowDown marginLeft='5px' />
         </Box>
       </Box>
-      {isProducing && <PopOver />}
+      {showPopOver && <PopOver />}
       <GradientH height='50px' />
       <SandHeader />
       <Content>
