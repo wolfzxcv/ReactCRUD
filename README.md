@@ -1,11 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
+To run this project.......
 
-## Available Scripts
+1. Download or clone this project
+2. To install all the dependencies of this project. <br>
+   `npm install`
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.<br />
-Or you can see the demo by clicking [here](https://wolfzxcv.github.io/ReactCRUD/)
+3. To Run the app in the development mode. <br>
+   `npm start`  
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   Or you can see the demo by clicking [here](https://wolfzxcv.github.io/ReactCRUD/)
