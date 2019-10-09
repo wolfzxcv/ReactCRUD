@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { ModalProvider } from 'styled-react-modal';
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
@@ -9,6 +9,7 @@ import PopOver from './PopOver';
 import AddCustomerModal from './AddCustomerModal';
 
 const WholePage = () => {
+  const [sortType, setSortType] = useState(0);
   const {
     isEdit,
     setIsEdit,
@@ -19,6 +20,25 @@ const WholePage = () => {
     showPopOver,
     isWaiting,
   } = useContext(AppContext);
+
+  const sortByName = () => {
+    if (sortType === 0) {
+      setSortType(1);
+    } else if (sortType === 1) {
+      setSortType(2);
+    } else if (sortType === 2) {
+      setSortType(1);
+    }
+  };
+
+  let display;
+  if (sortType === 0) {
+    display = customerList;
+  } else if (sortType === 1) {
+    display = customerList.sort((a, b) => b.name.localeCompare(a.name));
+  } else if (sortType === 2) {
+    display = customerList.sort((a, b) => a.name.localeCompare(b.name));
+  }
 
   return (
     <ModalProvider>
@@ -127,7 +147,7 @@ const WholePage = () => {
             alignItems='center'
           >
             <Box> Type something 1</Box>
-            <BoxHover>
+            <BoxHover onClick={() => sortByName()}>
               <i className='fas fa-sort' />
             </BoxHover>
           </TableTitle>
@@ -143,7 +163,7 @@ const WholePage = () => {
           </TableTitle>
         </Box>
 
-        {customerList.map(d => (
+        {display.map(d => (
           <List key={d.id} id={d.id} date={d.date} name={d.name} />
         ))}
       </Content>
