@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/ReactCRUD/static/css/main.76efb973.chunk.css",
-    "main.js": "/ReactCRUD/static/js/main.407572fc.chunk.js",
-    "main.js.map": "/ReactCRUD/static/js/main.407572fc.chunk.js.map",
+    "main.css": "/ReactCRUD/static/css/main.3749c695.chunk.css",
+    "main.js": "/ReactCRUD/static/js/main.b20293fd.chunk.js",
+    "main.js.map": "/ReactCRUD/static/js/main.b20293fd.chunk.js.map",
     "runtime-main.js": "/ReactCRUD/static/js/runtime-main.b32ebc6c.js",
     "runtime-main.js.map": "/ReactCRUD/static/js/runtime-main.b32ebc6c.js.map",
-    "static/js/2.88272fe1.chunk.js": "/ReactCRUD/static/js/2.88272fe1.chunk.js",
-    "static/js/2.88272fe1.chunk.js.map": "/ReactCRUD/static/js/2.88272fe1.chunk.js.map",
+    "static/js/2.7ce07876.chunk.js": "/ReactCRUD/static/js/2.7ce07876.chunk.js",
+    "static/js/2.7ce07876.chunk.js.map": "/ReactCRUD/static/js/2.7ce07876.chunk.js.map",
     "index.html": "/ReactCRUD/index.html",
-    "precache-manifest.5a8cc98eb4ec79d21f2f1bfedfbca39d.js": "/ReactCRUD/precache-manifest.5a8cc98eb4ec79d21f2f1bfedfbca39d.js",
+    "precache-manifest.7f98f8b8fbe8924e7da5d6a5606fe818.js": "/ReactCRUD/precache-manifest.7f98f8b8fbe8924e7da5d6a5606fe818.js",
     "service-worker.js": "/ReactCRUD/service-worker.js",
-    "static/css/main.76efb973.chunk.css.map": "/ReactCRUD/static/css/main.76efb973.chunk.css.map"
+    "static/css/main.3749c695.chunk.css.map": "/ReactCRUD/static/css/main.3749c695.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.b32ebc6c.js",
-    "static/js/2.88272fe1.chunk.js",
-    "static/css/main.76efb973.chunk.css",
-    "static/js/main.407572fc.chunk.js"
+    "static/js/2.7ce07876.chunk.js",
+    "static/css/main.3749c695.chunk.css",
+    "static/js/main.b20293fd.chunk.js"
   ]
 }
