@@ -1,5 +1,6 @@
 import React, { useState, createContext } from 'react';
 import uuid from 'uuid';
+import data from '../assets/mockData.json';
 
 export const AppContext = createContext();
 
@@ -8,7 +9,7 @@ const AppContextProvider = props => {
   const [isEdit, setIsEdit] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('Opprett ny kunde');
-  const [customerList, setCustomerList] = useState([]);
+  const [customerList, setCustomerList] = useState(data);
   const [updateById, setUpdateById] = useState('');
   const [isProducing, setIsProducing] = useState(false);
   const [showPopOver, setShowPopOver] = useState(false);
@@ -25,6 +26,7 @@ const AppContextProvider = props => {
     data.id = uuid.v4();
     setCustomerList([...customerList, data]);
     closeModal();
+    console.log([...customerList, data]);
   };
 
   const updateCustomer = data => {
