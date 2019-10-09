@@ -8,9 +8,16 @@ import PopOver from './PopOver';
 import AddCustomerModal from './AddCustomerModal';
 
 const WholePage = () => {
-  const { isEdit, setIsEdit, setIsModalOpen, customerList } = useContext(
-    AppContext
-  );
+  const {
+    isEdit,
+    setIsEdit,
+    setIsModalOpen,
+    customerList,
+    isProducing,
+    startProducing,
+  } = useContext(AppContext);
+
+  console.log('isProducing', isProducing);
 
   return (
     <ModalProvider>
@@ -42,19 +49,31 @@ const WholePage = () => {
           <ArrowDown marginLeft='5px' />
         </Box>
       </Box>
-      <PopOver />
+      {isProducing && <PopOver />}
       <GradientH height='50px' />
       <SandHeader />
       <Content>
         <Box marginLeft='15px' display='flex'>
-          <Button
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            marginRight='10px'
-          >
-            Start
-          </Button>
+          {isProducing ? (
+            <InactiveStart
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              marginRight='10px'
+            >
+              Start
+            </InactiveStart>
+          ) : (
+            <Button
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              marginRight='10px'
+              onClick={() => startProducing()}
+            >
+              Start
+            </Button>
+          )}
           <Button
             display='flex'
             justifyContent='center'
@@ -201,6 +220,15 @@ const Button = styled(Box)`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const InactiveStart = styled(Box)`
+  height: 40px;
+  width: 87px;
+  border-radius: 6px;
+  color: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.graBlue1};
+  opacity: 0.48;
 `;
 
 const TableTitle = styled(Box)`

@@ -4,9 +4,14 @@ import Box from '@material-ui/core/Box';
 import { AppContext } from '../context/AppContext';
 
 const PopOver = () => {
-  const { customerList } = useContext(AppContext);
+  const { setIsProducing, customerList } = useContext(AppContext);
   return (
-    <StyledPopOver display='flex' flexDirection='column' bgcolor='white'>
+    <StyledPopOver
+      display='flex'
+      flexDirection='column'
+      bgcolor='white'
+      onClick={() => setIsProducing(false)}
+    >
       <MessageArrow />
       <RoundBorder
         height='30px'
@@ -16,8 +21,8 @@ const PopOver = () => {
       >
         Bekreftelse
       </RoundBorder>
-      <Box display='flex' alignItems='center'>
-        <Box fontSize='8px' color='#03fc0f' marginX='5px'>
+      <Box height='30px' display='flex' alignItems='center'>
+        <Box fontSize='8px' color='#03fc0f' marginX='7px'>
           <i className='fas fa-circle' />
         </Box>
         <Box color='black'>Produsert</Box>
@@ -36,6 +41,10 @@ const StyledPopOver = styled(Box)`
   right: 75px;
   width: 150px;
   height: 60px;
+  box-shadow: 0 2px 7px 2px rgba(169, 169, 169, 0.5);
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const RoundBorder = styled(Box)`

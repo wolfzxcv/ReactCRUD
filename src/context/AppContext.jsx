@@ -10,6 +10,7 @@ const AppContextProvider = props => {
   const [modalTitle, setModalTitle] = useState('Opprett ny kunde');
   const [customerList, setCustomerList] = useState([]);
   const [updateById, setUpdateById] = useState('');
+  const [isProducing, setIsProducing] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -62,6 +63,12 @@ const AppContextProvider = props => {
     setUpdateById(id);
   };
 
+  const startProducing = () => {
+    setIsProducing(true);
+    setIsEdit(false);
+    console.log('producing');
+  };
+
   const value = {
     input,
     setInput,
@@ -79,6 +86,9 @@ const AppContextProvider = props => {
     editCustomer,
     updateCustomer,
     closeModal,
+    isProducing,
+    setIsProducing,
+    startProducing,
   };
 
   return <AppContext.Provider value={value} {...props} />;
