@@ -21,7 +21,6 @@ const List = ({ id, date, name }) => {
             >
               {date}
             </TableTitle>
-
             <TableTitle
               paddingX='15px'
               width='30vw'

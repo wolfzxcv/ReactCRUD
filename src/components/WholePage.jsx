@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import { AppContext } from '../context/AppContext';
 import List from './List';
+import PopOver from './PopOver';
 import AddCustomerModal from './AddCustomerModal';
 
 const WholePage = () => {
@@ -13,16 +14,35 @@ const WholePage = () => {
 
   return (
     <ModalProvider>
-      <LogoN
-        height='45px'
-        width='45px'
-        display='flex'
-        justifyContent='center'
-        alignItems='center'
-        onClick={() => window.location.reload()}
-      >
-        N
-      </LogoN>
+      <Box display='flex' justifyContent='space-between'>
+        <LogoN
+          height='45px'
+          width='45px'
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+          onClick={() => window.location.reload()}
+        >
+          N
+        </LogoN>
+        <Box
+          height='45px'
+          width='45px'
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+          marginRight='70px'
+        >
+          <Icon>
+            <i className='fas fa-check-circle' />
+          </Icon>
+          <Box marginLeft='20px' color='white'>
+            innstillinger
+          </Box>
+          <ArrowDown marginLeft='5px' />
+        </Box>
+      </Box>
+      <PopOver />
       <GradientH height='50px' />
       <SandHeader />
       <Content>
@@ -109,6 +129,19 @@ const LogoN = styled(Box)`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const Icon = styled(Box)`
+  font-size: ${props => props.theme.fontSize[1]};
+  color: ${props => props.theme.colors.nordBlue};
+`;
+
+const ArrowDown = styled(Box)`
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid ${props => props.theme.colors.white};
 `;
 
 const GradientH = styled(Box)`
