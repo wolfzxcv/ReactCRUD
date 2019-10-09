@@ -12,6 +12,7 @@ const AddCustomerModal = () => {
     addCustomer,
     modalTitle,
     closeModal,
+    updateCustomer,
   } = useContext(AppContext);
   return (
     <StyledModal isOpen={isModalOpen}>
@@ -43,15 +44,27 @@ const AddCustomerModal = () => {
         </Box>
       </Box>
       <Box display='flex' justifyContent='flex-end' marginBottom='10px'>
-        <Button
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
-          marginRight='10px'
-          onClick={() => addCustomer(input)}
-        >
-          Lagre
-        </Button>
+        {modalTitle === 'Opprett ny kunde' ? (
+          <Button
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+            marginRight='10px'
+            onClick={() => addCustomer(input)}
+          >
+            Lagre
+          </Button>
+        ) : (
+          <Button
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+            marginRight='10px'
+            onClick={() => updateCustomer(input)}
+          >
+            Lagre
+          </Button>
+        )}
         <Button
           display='flex'
           justifyContent='center'

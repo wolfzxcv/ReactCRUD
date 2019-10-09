@@ -9,18 +9,20 @@ const AppContextProvider = props => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('Opprett ny kunde');
   const [customerList, setCustomerList] = useState([]);
+  const [updateById, setUpdateById] = useState('');
 
   const addCustomer = data => {
     data.id = uuid.v4();
     setCustomerList([...customerList, data]);
     setIsModalOpen(false);
     setInput({ date: '', name: '' });
+    setModalTitle('Opprett ny kunde');
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setModalTitle('Opprett ny kunde');
     setInput({ date: '', name: '' });
+    setModalTitle('Opprett ny kunde');
   };
 
   const removeCustomer = id => {
@@ -30,9 +32,22 @@ const AppContextProvider = props => {
 
   const editCustomer = id => {
     const customer = customerList.find(d => d.id === id);
-    setModalTitle(`Edit ${customer.name}`);
+    setModalTitle(`Edit  ${customer.name}`);
     setIsModalOpen(true);
     setInput({ date: customer.date, name: customer.name });
+    setUpdateById(id);
+  };
+
+  const updateCustomer = data => {
+    const newCustomerList = customerList.map(list => {
+      if (list.id === updateById)
+        return { ...list, date: data.date, name: data.name };
+      return list;
+    });
+    setCustomerList(newCustomerList);
+    setIsModalOpen(false);
+    setInput({ date: '', name: '' });
+    setModalTitle('Opprett ny kunde');
   };
 
   const value = {
@@ -49,6 +64,7 @@ const AppContextProvider = props => {
     addCustomer,
     removeCustomer,
     editCustomer,
+    updateCustomer,
     closeModal,
   };
 
