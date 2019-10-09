@@ -11,18 +11,42 @@ const AppContextProvider = props => {
   const [customerList, setCustomerList] = useState([]);
   const [updateById, setUpdateById] = useState('');
 
-  const addCustomer = data => {
-    data.id = uuid.v4();
-    setCustomerList([...customerList, data]);
-    setIsModalOpen(false);
-    setInput({ date: '', name: '' });
-    setModalTitle('Opprett ny kunde');
-  };
-
   const closeModal = () => {
     setIsModalOpen(false);
     setInput({ date: '', name: '' });
     setModalTitle('Opprett ny kunde');
+    setUpdateById('');
+  };
+
+  const addCustomer = data => {
+    data.id = uuid.v4();
+    setCustomerList([...customerList, data]);
+    closeModal();
+  };
+
+  const updateCustomer = data => {
+    const newCustomerList = customerList.map(list => {
+      if (list.id === updateById)
+        return { ...list, date: data.date, name: data.name };
+      return list;
+    });
+    setCustomerList(newCustomerList);
+    closeModal();
+  };
+
+  const validateCustomerInfo = data => {
+    const validatorCondition =
+      /^([0]?[1-9]|[1|2][0-9]|[3][0|1])\.([0]?[1-9]|[1][0-2])\.(([0-9]{2}))$/.test(
+        data.date
+      ) && data.name.length > 0;
+    if (validatorCondition && updateById.length === 0) {
+      addCustomer(data);
+    } else if (validatorCondition && updateById.length > 5) {
+      updateCustomer(data);
+    } else
+      alert(
+        `Date must follow the format DD.MM.YY\nDate must be valid\ncustomer name can't be empty`
+      );
   };
 
   const removeCustomer = id => {
@@ -38,18 +62,6 @@ const AppContextProvider = props => {
     setUpdateById(id);
   };
 
-  const updateCustomer = data => {
-    const newCustomerList = customerList.map(list => {
-      if (list.id === updateById)
-        return { ...list, date: data.date, name: data.name };
-      return list;
-    });
-    setCustomerList(newCustomerList);
-    setIsModalOpen(false);
-    setInput({ date: '', name: '' });
-    setModalTitle('Opprett ny kunde');
-  };
-
   const value = {
     input,
     setInput,
@@ -61,6 +73,7 @@ const AppContextProvider = props => {
     setModalTitle,
     customerList,
     setCustomerList,
+    validateCustomerInfo,
     addCustomer,
     removeCustomer,
     editCustomer,
